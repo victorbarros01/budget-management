@@ -31,6 +31,9 @@ model User {
   email    String   @unique
   password String
   createAt DateTime @default(now())
+  emailVerified Boolean  @default(false)
+  verifyToken String? @unique
+  verifyExpires DateTime?
   budgets  Budget[]
   role     Role
 }

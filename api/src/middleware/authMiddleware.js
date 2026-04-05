@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-
 export const authMiddleware = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
@@ -11,7 +10,6 @@ export const authMiddleware = (req, res, next) => {
     const token = authHeader.split(' ')[1];
 
     try{
-        console.log(token, process.env.JWT_SECRETKEY);
         const decoded = jwt.verify(token, process.env.JWT_SECRETKEY);
         req.userId = decoded.id;
         next()
